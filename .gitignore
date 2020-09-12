@@ -10,7 +10,11 @@ composer.lock
 selenium.php
 /bootstrap/compiled.php
 .phpunit.result.cache
-
+/storage/framework/sessions
+/storage/framework/cache
+/storage/cms/cache
+/storage/cms/twig
+/storage/logs
 
 # Other ignores
 .DS_Store
