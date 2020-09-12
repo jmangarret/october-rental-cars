@@ -1,0 +1,18 @@
+# Composer ignores
+/vendor
+composer.phar
+composer.lock
+
+# Framework ignores
+.env
+.env.*.php
+.env.php
+selenium.php
+/bootstrap/compiled.php
+.phpunit.result.cache
+
+
+# Other ignores
+.DS_Store
+package-lock.json
+/node_modules
