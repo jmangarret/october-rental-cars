@@ -1,0 +1,10 @@
+scopes:
+    date_start:
+        label: 'Fecha Desde'
+        type: date
+        conditions: date_start >= ':filtered'
+
+    date_end:
+        label: 'Fecha Hasta'
+        type: date
+        conditions: date_end <= ':filtered'

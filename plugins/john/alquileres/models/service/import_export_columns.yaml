@@ -1,0 +1,15 @@
+columns:
+    id:
+        label: id
+    car_id:
+        label: car_id
+    date_start:
+        label: date_start
+    date_end:
+        label: date_end
+    client_id:
+        label: client_id
+    payment_method:
+        label: payment_method
+    created_at:
+        label: created_at

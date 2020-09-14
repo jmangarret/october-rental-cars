@@ -17,3 +17,8 @@ navigation:
         label: Alquileres
         url: john/alquileres/services
         icon: icon-cc
+        sideMenu:
+            side-menu-item:
+                label: Reporte
+                url: john/alquileres/services/reporte
+                icon: icon-download

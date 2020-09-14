@@ -25,6 +25,9 @@ class Service extends Model
     public $rules = [
     ];
 
+    protected $visible = ['date_start', 'date_end'];
+
+
     public $belongsTo = [
         'car' => 'John\Alquileres\Models\Car',
         'client' => 'John\Alquileres\Models\Client'

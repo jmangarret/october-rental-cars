@@ -1,0 +1,15 @@
+fields:
+    date1:
+        label: 'Fecha Desde'
+        mode: date
+        span: auto
+        context:
+            - create
+        type: datepicker
+    date2:
+        label: 'Fecha Hasta'
+        span: auto
+        mode: date
+        context:
+            - create
+        type: datepicker
