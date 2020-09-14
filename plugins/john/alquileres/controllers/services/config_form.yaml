@@ -1,0 +1,10 @@
+name: Services
+form: $/john/alquileres/models/service/fields.yaml
+modelClass: John\Alquileres\Models\Service
+defaultRedirect: john/alquileres/services
+create:
+    redirect: 'john/alquileres/services/update/:id'
+    redirectClose: john/alquileres/services
+update:
+    redirect: john/alquileres/services
+    redirectClose: john/alquileres/services

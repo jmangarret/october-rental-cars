@@ -1,9 +1,8 @@
-{% if result %}
-    <span class="lead">
-        The result is <span class="label label-success">{{ result }}</span>
-    </span>
+==
+<label for="">Total A Pagar:</label>
+
+{% if total %}
+    <input name="amount" class="form-control" id="total_a_pagar" value="{{ total }}" readonly>
 {% else %}
-    <span class="text-muted">
-        Click the <em>Calculate</em> button to find the answer.
-    </span>
+    <input name="amount" class="form-control" id="total_a_pagar" value="0.00" readonly>
 {% endif %}

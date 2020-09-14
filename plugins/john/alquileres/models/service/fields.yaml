@@ -1,0 +1,47 @@
+fields:
+    car:
+        label: Vehiculo
+        nameFrom: modelo
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    client:
+        label: Cliente
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        required: 1
+        type: relation
+    date_start:
+        label: 'Fecha Inicio'
+        mode: date
+        span: auto
+        placeholder: 'Fecha de Inicio del alquiler del vehiculo'
+        required: 1
+        type: datepicker
+        comment: 'Fecha de Inicio del alquiler del vehiculo'
+    date_end:
+        label: 'Fecha Regreso'
+        mode: date
+        span: auto
+        placeholder: 'Fecha de Entrega del vehiculo'
+        required: 1
+        type: datepicker
+        comment: 'Fecha de Entrega del vehiculo'
+    payment_method:
+        label: 'Medio de Pago'
+        span: full
+        showSearch: true
+        options:
+            efectivo: Efectivo
+            debito: 'Tarjeta de Debito'
+            credito: 'Tarjeta de Credito'
+            qr: 'Pago con QR'
+        required: 1
+        type: dropdown
+    amount:
+        label: 'Monto del alquiler'
+        span: full
+        required: 1
+        type: number

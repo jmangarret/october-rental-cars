@@ -9,3 +9,11 @@ navigation:
         label: Vehiculos
         url: john/alquileres/cars
         icon: icon-car
+    main-menu-item2:
+        label: 'Clientes Registrados'
+        url: john/alquileres/clients
+        icon: icon-briefcase
+    main-menu-item3:
+        label: Alquileres
+        url: john/alquileres/services
+        icon: icon-cc

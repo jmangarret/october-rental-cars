@@ -5,7 +5,7 @@ use Model;
 /**
  * Model
  */
-class Car extends Model
+class Service extends Model
 {
     use \October\Rain\Database\Traits\Validation;
     
@@ -17,7 +17,7 @@ class Car extends Model
     /**
      * @var string The database table used by the model.
      */
-    public $table = 'john_alquileres_car';
+    public $table = 'john_alquileres_service';
 
     /**
      * @var array Validation rules
@@ -25,12 +25,8 @@ class Car extends Model
     public $rules = [
     ];
 
-    public $hasMany = [
-        'services' => 'John\Alquileres\Models\Service'
+    public $belongsTo = [
+        'car' => 'John\Alquileres\Models\Car',
+        'client' => 'John\Alquileres\Models\Client'
     ];
-
-    public function scopeDisponibles($query)
-    {
-        return $query->where('disponible',1);
-    }
 }

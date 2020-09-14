@@ -1,0 +1,19 @@
+columns:
+    id:
+        label: id
+        type: number
+    name:
+        label: name
+        type: text
+        searchable: true
+        sortable: true
+    email:
+        label: email
+        type: text
+        searchable: true
+        sortable: true
+    document:
+        label: document
+        type: text
+        searchable: true
+        sortable: true

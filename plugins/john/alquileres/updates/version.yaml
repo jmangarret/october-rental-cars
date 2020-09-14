@@ -12,3 +12,6 @@
 1.0.5:
     - 'Updated table john_alquileres_service'
     - builder_table_update_john_alquileres_service.php
+1.0.6:
+    - 'Updated table john_alquileres_service'
+    - builder_table_update_john_alquileres_service_2.php

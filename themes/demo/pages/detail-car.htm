@@ -6,17 +6,94 @@ is_hidden = 0
 [car]
 identifierValue = "{{ :id }}"
 ==
+<?php
+use John\Alquileres\Models\Car;
+use John\Alquileres\Models\Client;
+use John\Alquileres\Models\Service;
+
+function onSave()
+{
+    $car_id     = input('car_id');
+    $name       = input('name');
+    $document   = input('document');
+    $email      = input('email');
+    $date_start = input('date_start');
+    $date_end   = input('date_end');
+    $amount   = input('amount');
+    $payment_method = input('payment_method');
+    
+    $rules = [
+        'name' => 'required',
+        'document' => 'required:numeric',
+        'email' => 'email'
+    ];
+
+    $validator = Validator::make(input(), $rules);
+
+    if($validator->fails()){
+        return $this['result']="Error en formulario de registro!";   
+    }
+
+    $client = Client::where('document',$document)->first();
+    if (!$client){
+         $client = new Client();   
+    }
+    $client->name = $name; 
+    $client->document = $document; 
+    $client->email = $email; 
+    
+    
+    if (!$client->save()){
+        return $this['result']="Error al Registrar Cliente!";    
+    }
+    
+    $newService = new Service();
+    
+    $newService->car_id = $car_id;
+    $newService->client_id = $client->id;
+    $newService->date_start = $date_start;
+    $newService->date_end = $date_end;
+    $newService->payment_method = $payment_method;
+    $newService->amount = $amount;
+    
+    if (!$newService->save()){
+        return $this['result']="Error al Registrar Servicio de Alquiler!";    
+    }
+    
+    $updateCar = Car::find($car_id);
+    $updateCar->disponible = 0;
+    $updateCar->save();
+    
+    return $this['result']="Alquiler de Vehiculo registrado!";
+}
+
+function onCalcAmount(){
+    $valor = input('valor');
+    $start = input('date_start');
+    $end   = input('date_end');
+    
+    $dias = (strtotime($end)-strtotime($start))/86400;
+    
+    $total= $valor * $dias;
+    if ($total>0){
+        return $this['total'] = $total;
+    }
+    
+    return false;
+}
+?>
+==
 <div class="container">
 
     <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Detalle del Vehiculo</h3>
+            <h3 class="panel-title">Datos del Alquiler</h3>
         </div>
         <div class="panel-body">
 
             {%  set car = car.car %}
             
-            <h3>{{ car.modelo }} </h3>
+            <h3>Vehiculo: {{ car.modelo }} </h3>
             
             <li>
                 Placa: {{ car.placa }} 
@@ -28,11 +105,89 @@ identifierValue = "{{ :id }}"
                 Color: {{ car.color }} 
             </li>
             
+             <li>
+                Valor: {{ car.valor_diario }} 
+            </li>
+            
+            <h3>Ingrese Datos del Cliente y Fechas de Alquiler</h3>
+            
+            
+            <form data-request="onSave" data-request-update="'result': '#result'">
+                <div class="form-group">
+                    <label for="pwd">Num.Documento:</label>
+                    <input type="number" name="document" class="form-control" required>
+                    <span data-validate-for="document"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="pwd">Nombre:</label>
+                    <input name="name" class="form-control" required>
+                    <span data-validate-for="name"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input name="email" type="email" class="form-control" required>
+                    <span data-validate-for="email"></span>
+                </div>
+            
+                <div class="form-group">
+                    <label for="date_start">Fecha Inicio:</label>
+                    <input name="date_start" type="date" class="form-control" required>
+                    <span data-validate-for="date_start"></span>
+                </div>
+            
+                <div class="form-group">
+                    <label for="date_end">Fecha Regreso:</label>
+                    <input name="date_end" type="date" class="form-control" required>
+                    <span data-validate-for="date_end"></span>
+                </div>
+            
+                <div class="form-group" id="total">                    
+                     {% partial "calcresult" %}                    
+                </div>
+            
+                <div class="form-group">
+                    <label for="pwd">Medio de Pago:</label>
+                    <select name="payment_method" class="form-control" required>
+                        <option value="efectivo">Efectivo</option>
+                        <option value="debito">Tarjeta de Debito</option>
+                        <option value="credito">Tarjeta de Credito</option>
+                        <option value="qr">Pago con QR</option>
+                    </select>
+                </div>
+                
+                <input type="hidden"  name="car_id" value="{{ car.id }}">
+            
+                <button type="submit" class="btn btn-primary">Alquilar!</button>
+            </form>
+            
         </div>
       
         <div class="panel-footer" id="result">
-            
+            {% partial "result" %}                    
         </div>
     </div>
 
 </div>
+
+{% put scripts %}
+<script>
+    $('input[name=date_end]').change( ()=> {
+        let date1 = $('input[name=date_start]').val();
+        let date2 = $('input[name=date_end]').val();
+        
+        $.request('onCalcAmount', {
+        data: {
+            valor: {{ car.valor_diario }},
+            date_start : date1,
+            date_end : date2,
+        },
+        update:  {
+           calcresult: '#total'
+        }
+    })
+        
+    });
+</script>
+{% endput %}

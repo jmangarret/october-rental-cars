@@ -1,0 +1,10 @@
+name: Clients
+form: $/john/alquileres/models/client/fields.yaml
+modelClass: John\Alquileres\Models\Client
+defaultRedirect: john/alquileres/clients
+create:
+    redirect: 'john/alquileres/clients/update/:id'
+    redirectClose: john/alquileres/clients
+update:
+    redirect: john/alquileres/clients
+    redirectClose: john/alquileres/clients

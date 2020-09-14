@@ -1,0 +1,4 @@
+title: Services
+modelClass: John\Alquileres\Models\Service
+toolbar:
+    buttons: reorder_toolbar

@@ -1,0 +1,4 @@
+title: Clients
+modelClass: John\Alquileres\Models\Client
+toolbar:
+    buttons: reorder_toolbar
