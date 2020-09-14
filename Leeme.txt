@@ -1,0 +1,48 @@
+Este proyecto fue creado experimentando el CMS October, el cual esta basado en el framework Laravel, el cual si domino mas a la perfeccion.
+
+PROYECTO: ALQUILER DE VEHICULOS
+
+Instalacion.
+
+1. Descomprimir en la raiz el zip entregado october.zip
+
+o en su defecto, descargar o clonar repositorio en document root de su servidor local
+
+https://github.com/jmangarret/october-rental-cars.git
+
+
+2. Crear una BD y el archivo .ENV en la raiz del proyecto con las siguientes variables
+
+APP_ENV=dev
+
+DB_HOST=localhost
+DB_PORT=[PUERTO DE LA BD, POR DEFAULT 3306]
+DB_DATABASE=[NOMBRE BASE DE DATOS CREADA]
+DB_USERNAME=[USUARIO DE CONEXION AL BD CREADA, POR DEFECTO root]
+DB_PASSWORD=[CLAVE DE CONEXION DEL USUARIO ANTERIOS]
+
+3. Abrir una terminal y ejecutar los siguientes comandos:
+
+curl -s https://octobercms.com/api/installer | php
+
+php artisan october:update
+
+php aritsan october:up 
+
+4. Abrir navegador con la URL del proyecto.
+
+5. Para entrar al backend ingresar 
+
+[url]/backend/
+
+usuario: admin
+pass:admin
+
+
+6. Para correr con datos de prueba importar el archivo sql october_db_cars.sql de la raiz del proyecto.
+
+7. Para ver el funcionamiento del mismo, ver video en la raiz del proyecto.
+
+
+
+
