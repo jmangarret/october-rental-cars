@@ -1,0 +1,7 @@
+{%  set cars = __SELF__.cars %}
+
+<ul>
+    {% for car in cars %}
+    <li>{{ car.placa }} {{ car.modelo }}</li>
+    {% endfor %}
+</ul>

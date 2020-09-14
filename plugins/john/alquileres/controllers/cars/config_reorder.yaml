@@ -1,0 +1,4 @@
+title: Cars
+modelClass: John\Alquileres\Models\Car
+toolbar:
+    buttons: reorder_toolbar

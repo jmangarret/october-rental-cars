@@ -1,0 +1,36 @@
+title = "Cars"
+url = "/"
+layout = "default"
+description = "List all cars"
+is_hidden = 0
+
+[cars]
+==
+<div class="container">
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">Vehiculos en Alquiler</h3>
+        </div>
+        <div class="panel-body">
+        
+        {%  set cars = cars.cars %}
+
+        <ul>
+            {% for car in cars %}           
+                <li>
+                    <h3><a href="detail/{{ car.id }}">{{ car.modelo }} {{ car.year }}</a></h3>
+                    Placas: {{ car.placa }} <br>
+                    Color: {{ car.color }} <br>
+                    <strong>Alquiler/dia: {{ car.valor_diario }}</strong>
+                </li>
+            {% endfor %}
+        </ul>
+        
+        </div>
+        <div class="panel-footer" id="result">
+            
+        </div>
+    </div>
+
+</div>

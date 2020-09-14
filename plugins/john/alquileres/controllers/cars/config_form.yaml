@@ -1,0 +1,10 @@
+name: Cars
+form: $/john/alquileres/models/car/fields.yaml
+modelClass: John\Alquileres\Models\Car
+defaultRedirect: john/alquileres/cars
+create:
+    redirect: 'john/alquileres/cars/update/:id'
+    redirectClose: john/alquileres/cars
+update:
+    redirect: john/alquileres/cars
+    redirectClose: john/alquileres/cars

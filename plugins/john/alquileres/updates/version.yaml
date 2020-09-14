@@ -1,0 +1,14 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table john_alquileres_car'
+    - builder_table_create_john_alquileres_car.php
+1.0.3:
+    - 'Created table john_alquileres_service'
+    - builder_table_create_john_alquileres_service.php
+1.0.4:
+    - 'Created table john_alquileres_client'
+    - builder_table_create_john_alquileres_client.php
+1.0.5:
+    - 'Updated table john_alquileres_service'
+    - builder_table_update_john_alquileres_service.php

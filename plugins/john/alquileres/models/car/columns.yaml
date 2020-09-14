@@ -1,0 +1,22 @@
+columns:
+    id:
+        label: id
+        type: number
+    placa:
+        label: placa
+        type: text
+    color:
+        label: color
+        type: text
+    year:
+        label: year
+        type: number
+    modelo:
+        label: modelo
+        type: text
+    valor_diario:
+        label: valor_diario
+        type: text
+    disponible:
+        label: disponible
+        type: text

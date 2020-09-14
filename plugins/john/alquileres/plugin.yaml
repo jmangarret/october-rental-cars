@@ -1,0 +1,11 @@
+plugin:
+    name: 'john.alquileres::lang.plugin.name'
+    description: 'john.alquileres::lang.plugin.description'
+    author: John
+    icon: oc-icon-renren
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Vehiculos
+        url: john/alquileres/cars
+        icon: icon-car
